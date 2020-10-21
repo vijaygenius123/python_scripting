@@ -1,7 +1,13 @@
+import os
 import requests
+from dotenv import load_dotenv
+load_dotenv()
 
-url = "https://api.github.com/users/vijaygenius123"
+TOKEN = os.getenv("GITHUB_TOKEN")
 
-response = requests.get(url)
+
+url = "https://api.github.com/user"
+
+response = requests.get(url, headers={'Authorization': 'Bearer ' + TOKEN})
 
 print(response.text)
